@@ -1,6 +1,6 @@
 {
   "name": "ol-app-setup",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Script for the creation of a basic setup of an OpenLayers application",
   "main": "./index.js",
   "repository": "https://github.com/chrismayer/ol-app-setup",

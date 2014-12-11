@@ -3,6 +3,9 @@
   "version": "0.1.2",
   "description": "Script for the creation of a basic setup of an OpenLayers application",
   "main": "./index.js",
+  "bin": {
+    "ol-app-setup": "./index.js"
+  },
   "repository": "https://github.com/chrismayer/ol-app-setup",
   "licenses": [
     {

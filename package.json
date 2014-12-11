@@ -1,0 +1,29 @@
+{
+  "name": "ol-app-setup",
+  "version": "0.1.0",
+  "description": "Script for the creation of a basic setup of an OpenLayers application",
+  "main": "index.js",
+  "repository": "https://github.com/chrismayer/ol-app-setup",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/chrismayer/ol-app-setup/blob/master/LICENSE"
+    }
+  ],
+  "author": {
+    "name": "Christian Mayer",
+    "url": "http://meggsimum.de"
+  },
+  "dependencies": {
+    "commander": "2.2.0"
+  },
+  "bin": {
+    "ol-app-setup": "./index.js"
+  },
+  "devDependencies": {
+    "jshint": "~2.5.0"
+  },
+  "scripts": {
+    "test": "jshint . --exclude node_modules"
+  }
+}

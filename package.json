@@ -16,14 +16,6 @@
   },
   "dependencies": {
     "commander": "2.2.0"
-  },
-  "bin": {
-    "ol-app-setup": "./index.js"
-  },
-  "devDependencies": {
-    "jshint": "~2.5.0"
-  },
-  "scripts": {
-    "test": "jshint . --exclude node_modules"
   }
 }
+

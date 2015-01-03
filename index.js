@@ -17,8 +17,8 @@ var program = require('commander');
 
 var profiles = {
     ol3: {
-        js: 'http://openlayers.org/en/v3.0.0/build/ol.js',
-        css: 'http://openlayers.org/en/v3.0.0/css/ol.css',
+        js: 'http://openlayers.org/en/v3.1.1/build/ol.js',
+        css: 'http://openlayers.org/en/v3.1.1/css/ol.css',
         idxTpl: 'templates/index.ol3.template',
         appJsTpl: 'templates/app.ol3.template'
     },

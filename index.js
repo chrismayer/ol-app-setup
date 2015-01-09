@@ -3,7 +3,7 @@
 /*
  * ol-app-setup
  *
- * (c) 2014 Christian Mayer, http://www.meggsimum.de
+ * (c) 2015 Christian Mayer, http://www.meggsimum.de
  *
  * Licensed under MIT-License, for full license text see LICENSE-file
  */

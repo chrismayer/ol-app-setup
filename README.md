@@ -21,6 +21,7 @@ See `ol-app-setup --help` for detailed usage.
     -v, --olversion <majorversion>  Defines the library profile to be used for the app setup. Valid options are "ol3" and "ol2". (Default is "ol3")
     -j, --jquery                    Includes jQuery in your app setup
     -b, --bootstrap                 Includes bootstrap in your app setup
+    -s, --server                    Start an internal web server on localhost:8888
 
 
 Example calls

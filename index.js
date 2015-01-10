@@ -14,6 +14,8 @@ var http = require('http');
 
 // 3rd party modules
 var program = require('commander');
+var connect = require('connect');
+var serveStatic = require('serve-static');
 
 var profiles = {
     ol3: {
@@ -44,6 +46,7 @@ program
         '(Default is "ol3")')
     .option('-j, --jquery', 'Includes jQuery in your app setup')
     .option('-b, --bootstrap', 'Includes bootstrap in your app setup')
+    .option('-s, --server', 'Start an internal web server on localhost:8888')
     .parse(process.argv);
 
 
@@ -115,6 +118,12 @@ copyFile(libProfile.idxTpl, targetFolder + "index.html", function() {
     }
 
 });
+
+if(program.server) {
+    console.info("Starting server for " + targetFolder);
+    console.info("Open http://localhost:8888/ to see the app");
+    connect().use(serveStatic(targetFolder)).listen(8888);
+}
 
 /**
  * Copies a file from source to target

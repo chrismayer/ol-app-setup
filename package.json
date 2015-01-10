@@ -19,6 +19,9 @@
     "url": "http://meggsimum.de"
   },
   "dependencies": {
-    "commander": "2.2.0"
+    "commander": "2.2.0",
+    "bootstrap": "3.3.1",
+    "jquery": "1.11.2",
+    "openlayers": "3.1.1"
   }
 }

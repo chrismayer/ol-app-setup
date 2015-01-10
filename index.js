@@ -17,23 +17,23 @@ var program = require('commander');
 
 var profiles = {
     ol3: {
-        js: 'http://openlayers.org/en/v3.1.1/build/ol.js',
-        css: 'http://openlayers.org/en/v3.1.1/css/ol.css',
+        js: 'node_modules/openlayers/dist/ol.js',
+        css: 'node_modules/openlayers/css/ol.css',
         idxTpl: 'templates/index.ol3.template',
         appJsTpl: 'templates/app.ol3.template'
     },
     ol2: {
-        js: 'http://cdnjs.cloudflare.com/ajax/libs/openlayers/2.13.1/OpenLayers.js',
-        css: 'http://cdnjs.cloudflare.com/ajax/libs/openlayers/2.13.1/theme/default/style.css',
+        js: 'libs/OpenLayers-2.13.1.js',
+        css: 'libs/OpenLayers-2.13.1.css',
         idxTpl: 'templates/index.ol2.template',
         appJsTpl: 'templates/app.ol2.template'
     },
     jquery: {
-        js: 'http://code.jquery.com/jquery-1.11.1.min.js'
+        js: 'node_modules/jquery/dist/jquery.min.js'
     },
     bootstrap3: {
-        js: 'http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js',
-        css: 'http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'
+        js: 'node_modules/bootstrap/dist/js/bootstrap.min.js',
+        css: 'node_modules/bootstrap/dist/css/bootstrap.min.css'
     }
 };
 
@@ -73,20 +73,20 @@ if(!fs.existsSync(libFolder)) {
     fs.mkdir(libFolder);
 }
 
-// download local copies of library files
+// copy local library files
 
 // ol
-downloadFile(libProfile.js, libFolder + "/ol.js");
-downloadFile(libProfile.css, libFolder + "/ol.css");
+copyFile(libProfile.js, libFolder + "/ol.js");
+copyFile(libProfile.css, libFolder + "/ol.css");
 
 if(program.jquery) {
     // jQuery
-    downloadFile(profiles.jquery.js, libFolder + "/jquery.js");
+    copyFile(profiles.jquery.js, libFolder + "/jquery.js");
 }
 if(program.bootstrap) {
     // bootstrap
-    downloadFile(profiles.bootstrap3.js, libFolder + "/bootstrap3.js");
-    downloadFile(profiles.bootstrap3.css, libFolder + "/bootstrap3.css");
+    copyFile(profiles.bootstrap3.js, libFolder + "/bootstrap3.js");
+    copyFile(profiles.bootstrap3.css, libFolder + "/bootstrap3.css");
 }
 
 // copy the app JS-file
@@ -113,34 +113,16 @@ copyFile(libProfile.idxTpl, targetFolder + "index.html", function() {
                 /__BOOTSTRAPCSS__/g, '');
         replaceFileContent(targetFolder + "index.html", /__BOOTSTRAPJS__/g, '');
     }
+
 });
-
-/**
- * Downloads a remote file defined by its URL
- */
-function downloadFile(url, filename) {
-
-    console.info("Start downloading ", url, "...");
-
-    var file = fs.createWriteStream(filename),
-        request = http.get(url, function(response) {
-            console.info("... finished downloading ", url);
-            response.pipe(file);
-            file.on('finish', function() {
-                file.close();
-                console.info("... writing to ", filename);
-            });
-        }).on('error', function(e) {
-            console.error('\nError while downloading: %s\n' +
-                            'Reason is: %s\nExit...', url, e.message);
-            process.exit(1);
-        });
-}
 
 /**
  * Copies a file from source to target
  */
 function copyFile(source, target, cb) {
+
+    console.info("Copying " + source + " to " + target + "...");
+
     var cbCalled = false;
 
     var rs = fs.createReadStream(source);

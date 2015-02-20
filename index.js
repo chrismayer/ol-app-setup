@@ -69,10 +69,10 @@ if(!strEndsWith(targetFolder, "/")) {
 // create output folder if not existing
 var libFolder = targetFolder + "/" + "libs";
 if(!fs.existsSync(targetFolder)) {
-    fs.mkdir(targetFolder);
+    fs.mkdirSync(targetFolder);
 }
 if(!fs.existsSync(libFolder)) {
-    fs.mkdir(libFolder);
+    fs.mkdirSync(libFolder);
 }
 
 // copy local library files

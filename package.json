@@ -1,6 +1,6 @@
 {
   "name": "ol-app-setup",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Script for the creation of a basic setup of an OpenLayers application",
   "main": "index.js",
   "preferGlobal": "true",

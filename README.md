@@ -37,3 +37,7 @@ Create a simple OpenLayers 2 app
 Create an ol3 app with jQuery and bootstrap
 
 `ol-app-setup -t /tmp/foo -v ol3 --jquery --bootstrap`
+
+Create an ol3 app and start an internal web server to explore the map
+
+`ol-app-setup -t /tmp/foo -v ol3 -s`

@@ -49,7 +49,6 @@ program
     .option('-s, --server', 'Start an internal web server on localhost:8888')
     .parse(process.argv);
 
-
 if (!program.target) {
     program.help();
     process.exit(1);
@@ -78,25 +77,28 @@ if(!fs.existsSync(libFolder)) {
 
 // copy local library files
 
+// the app root path while executing in a global context
+var appRoot = __dirname + '/';
+
 // ol
-copyFile(libProfile.js, libFolder + "/ol.js");
-copyFile(libProfile.css, libFolder + "/ol.css");
+copyFile(appRoot + libProfile.js, libFolder + "/ol.js");
+copyFile(appRoot + libProfile.css, libFolder + "/ol.css");
 
 if(program.jquery) {
     // jQuery
-    copyFile(profiles.jquery.js, libFolder + "/jquery.js");
+    copyFile(appRoot + profiles.jquery.js, libFolder + "/jquery.js");
 }
 if(program.bootstrap) {
     // bootstrap
-    copyFile(profiles.bootstrap3.js, libFolder + "/bootstrap3.js");
-    copyFile(profiles.bootstrap3.css, libFolder + "/bootstrap3.css");
+    copyFile(appRoot + profiles.bootstrap3.js, libFolder + "/bootstrap3.js");
+    copyFile(appRoot + profiles.bootstrap3.css, libFolder + "/bootstrap3.css");
 }
 
 // copy the app JS-file
-copyFile(libProfile.appJsTpl, targetFolder + "app.js");
+copyFile(appRoot + libProfile.appJsTpl, targetFolder + "app.js");
 
 // copy index file template and replace placeholder(s) afterwards
-copyFile(libProfile.idxTpl, targetFolder + "index.html", function() {
+copyFile(appRoot + libProfile.idxTpl, targetFolder + "index.html", function() {
 
     if (program.jquery) {
         replaceFileContent(targetFolder + "index.html",

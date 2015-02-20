@@ -92,6 +92,10 @@ if(program.bootstrap) {
     // bootstrap
     copyFile(appRoot + profiles.bootstrap3.js, libFolder + "/bootstrap3.js");
     copyFile(appRoot + profiles.bootstrap3.css, libFolder + "/bootstrap3.css");
+    // bootstrap-js needs jquery
+    if(!program.jquery) {
+        copyFile(appRoot + profiles.jquery.js, libFolder + "/jquery.js");
+    }
 }
 
 // copy the app JS-file
@@ -100,7 +104,7 @@ copyFile(appRoot + libProfile.appJsTpl, targetFolder + "app.js");
 // copy index file template and replace placeholder(s) afterwards
 copyFile(appRoot + libProfile.idxTpl, targetFolder + "index.html", function() {
 
-    if (program.jquery) {
+    if (program.jquery || program.bootstrap) {
         replaceFileContent(targetFolder + "index.html",
                 /__JQUERY__/g, '<script src="libs/jquery.js"></script>');
     } else {
